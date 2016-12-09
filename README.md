@@ -9,6 +9,6 @@ Automatically reference the ticket number for a particular branch in your commit
   ```
   $ git config --global alias.ticket '!sh ~/scripts/git-ticket.sh $1'
   ```
-- Add prepare-commit-msg to .git folder (or append code if it already exists). This will need to be done for each repo.
+- Add prepare-commit-msg to .git/hooks/ directory (or append code if it already exists). This will need to be done for each repo.
 
 TODO: Add to template: http://stackoverflow.com/questions/2293498/git-commit-hooks-global-settings
