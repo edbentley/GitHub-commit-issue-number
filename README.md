@@ -1,6 +1,11 @@
 # GitHub Commit Ticket Number
 Automatically reference the ticket number (issue or pull request) for a particular branch in your commit message.
 
+```
+$ git commit -m "add something"
+[branch 2d39dc8] add something #42
+```
+
 ## How to set up
 
 - Put `git-ticket.sh` script somewhere convenient
