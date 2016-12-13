@@ -2,8 +2,8 @@
 Automatically reference the ticket number (issue or pull request) for a particular branch in your commit message.
 
 ```
-$ git commit -m "the answer to the great question of life, the universe and everything"
-[branch 2d39dc8] the answer to the great question of life, the universe and everything #42
+$ git commit -m "add meaning of life"
+[branch 2d39dc8] add meaning of life #42
 ```
 
 ## How to set up
@@ -14,9 +14,9 @@ $ git commit -m "the answer to the great question of life, the universe and ever
   ```
   $ git config --global alias.ticket '!sh ~/scripts/git-ticket.sh $1'
   ```
-- Add `commit-msg` to `.git/hooks/` directory OR use `.git_template` below (or append code if it already exists). This will need to be done for each repo.
+- Add `prepare-commit-msg` to `.git/hooks/` directory OR use `.git_template` below (or append code if it already exists). This will need to be done for each repo.
 - You can have this file included by default when running `git init` by
-  - Placing `commit-msg` in `~/.git_template/hooks`
+  - Placing `prepare-commit-msg` in `~/.git_template/hooks`
   - `$ git config --global init.templatedir '~/.git_template'`
   
   This will add the file even if you call `git init` in an existing repo.
@@ -27,7 +27,7 @@ $ git commit -m "the answer to the great question of life, the universe and ever
   ```
   git ticket 42
   ```
-  When you next commit, the issue number will be added to the first line of your commit message.
+  When you next commit, the issue number will be added to the first line of your commit message. If you commit without a message the ticket number can be edited in the text editor.
 
 - Show ticket number for current branch:
   ```
