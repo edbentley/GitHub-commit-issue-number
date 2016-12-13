@@ -18,7 +18,7 @@ touch .git/hooks/branch-tickets.map
 BRANCH_NAME=`git symbolic-ref HEAD --short`
 BRANCH_MAP=`cat .git/hooks/branch-tickets.map`
 
-regex="(.*)$BRANCH_NAME ([0-9]+)(.*)"
+regex="(.*) $BRANCH_NAME ([0-9]+)(.*)"
 if [[ $BRANCH_MAP =~ $regex ]]
 then
   if [ "$REMOVING" = true ]; then
@@ -27,16 +27,20 @@ then
   elif [ "$READING" = true ]; then
     echo "Current branch ticket number is ${BASH_REMATCH[2]}"
   else
-    echo "${BASH_REMATCH[1]}$BRANCH_NAME $1${BASH_REMATCH[3]}" > .git/hooks/branch-tickets.map
+    echo "${BASH_REMATCH[1]} $BRANCH_NAME $1${BASH_REMATCH[3]}" > .git/hooks/branch-tickets.map
   fi
 else
   if [ "$READING" = true ] || [ "$REMOVING" = true ]; then
     echo "No ticket number set for current branch"
   else
-    echo "$BRANCH_NAME $1" >> .git/hooks/branch-tickets.map
+    echo " $BRANCH_NAME $1" >> .git/hooks/branch-tickets.map
   fi
 fi
 
 if [ $READING = false ] && [ "$REMOVING" = false ]; then
   echo "Current branch ticket number set to $1"
 fi
+
+# new line cleanup
+CLEANUP=`sed '/^$/d' .git/hooks/branch-tickets.map`
+echo "$CLEANUP" > .git/hooks/branch-tickets.map
