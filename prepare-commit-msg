@@ -5,13 +5,15 @@ BRANCH_MAP=`cat .git/hooks/branch-tickets.map`
 COMMIT_MESSAGE_HEAD=`cat "$1" | head -n 1`
 COMMIT_MESSAGE_REST=`cat "$1" | tail -n +2`
 
-regex="$BRANCH_NAME ([0-9]+)"
-if [[ $BRANCH_MAP =~ $regex ]]
-then
-  if [[ -z $COMMIT_MESSAGE_HEAD ]]
-  then
-    echo -e "#${BASH_REMATCH[1]}\n$COMMIT_MESSAGE_REST" > $1
+regex=" $BRANCH_NAME ([^ ]+) "
+if [[ $BRANCH_MAP =~ $regex ]]; then
+  TICKET_NUMBER="${BASH_REMATCH[1]}"
+  if [[ ${BASH_REMATCH[1]} =~ ^[0-9]+$ ]]; then
+    TICKET_NUMBER="#$TICKET_NUMBER"
+  fi
+  if [[ -z $COMMIT_MESSAGE_HEAD ]]; then
+    echo -e "$TICKET_NUMBER\n$COMMIT_MESSAGE_REST" > $1
   else
-    echo -e "$COMMIT_MESSAGE_HEAD #${BASH_REMATCH[1]}" > $1
+    echo -e "$COMMIT_MESSAGE_HEAD $TICKET_NUMBER" > $1
   fi
 fi
