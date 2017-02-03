@@ -25,16 +25,19 @@ $ git commit -m "add meaning of life"
 ## How to use
 
 - Set the ticket number for current branch:
+
   ```
   git ticket 42
   ```
   When you next commit, the issue number will be added to the first line of your commit message. If you commit without a message the ticket number can be edited in the text editor.
 
 - Show ticket number for current branch:
+
   ```
   git ticket
   ```
 - Remove ticket number for current branch:
+
   ```
   git ticket rm
   ```
@@ -49,6 +52,7 @@ $ git commit -m "add meaning of life"
 
 - Edit `branch-ticket-restrictions.sh` to add restrictions to branches you can set a ticket for. You can restrict certain branch names, or enforce a prefix.
 - Check current restrictions in repo by calling:
+
   ```
   git ticket restrict
   ```
