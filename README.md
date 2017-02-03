@@ -39,11 +39,11 @@ $ git commit -m "add meaning of life"
   git ticket rm
   ```
 - Custom strings are also supported for ticket numbers, for example to reference other repos:
+
   ```
   $ git ticket app#42
   Current branch ticket number set to 'app#42'
   ```
-
 
 ## Add branch restrictions
 
