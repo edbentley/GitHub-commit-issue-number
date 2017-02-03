@@ -28,7 +28,7 @@ $ git commit -m "add meaning of life"
   ```
   git ticket 42
   ```
-  When you next commit, the issue number will be added to the first line of your commit message.
+  When you next commit, the issue number will be added to the first line of your commit message. If you commit without a message the ticket number can be edited in the text editor.
 
 - Show ticket number for current branch:
   ```
