@@ -44,7 +44,7 @@ $ git commit -m "add meaning of life"
 - Custom strings are also supported for ticket numbers, for example to reference other repos:
 
   ```
-  $ git ticket app#42
+  $ git ticket Company/app#42
   Current branch ticket number set to 'Company/app#42'
   ```
 
