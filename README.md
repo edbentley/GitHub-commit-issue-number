@@ -45,7 +45,7 @@ $ git commit -m "add meaning of life"
 
   ```
   $ git ticket app#42
-  Current branch ticket number set to 'app#42'
+  Current branch ticket number set to 'Company/app#42'
   ```
 
 ## Add branch restrictions
