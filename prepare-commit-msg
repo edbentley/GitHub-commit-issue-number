@@ -1,4 +1,5 @@
 #!/bin/bash
+# git-ticket
 
 BRANCH_NAME=`git symbolic-ref HEAD --short`
 BRANCH_MAP=`cat .git/hooks/branch-tickets.map`

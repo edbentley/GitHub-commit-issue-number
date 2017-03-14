@@ -10,7 +10,13 @@ if [ ! -e $PREPARE_COMMIT_FILE ]; then
     echo "Repo git hooks not set up, calling 'git init' for you now"
     git init
   else
-    echo "Error: your git hooks are not set up"
+    echo "Error: your .git_template hooks are not set up"
+    exit
+  fi
+else
+  SECOND_LINE=`head -2 $PREPARE_COMMIT_FILE | tail -1`
+  if [ ! "$SECOND_LINE" = "# git-ticket" ]; then
+    echo "This repo already has its own $PREPARE_COMMIT_FILE file, please delete first if not needed"
     exit
   fi
 fi
@@ -59,7 +65,7 @@ if [[ $1 ]]; then
   READING=false
   if [ $1 = "rm" ]; then
     REMOVING=true
-  elif [ $1 = "restrict" ]; then
+  elif [ $1 = "restrictions" ]; then
     if [ -e $RESTRICTIONS_FILE ]; then
       echo "Restrictions can be edited in file '$RESTRICTIONS_FILE'"
       if [ ${#RESTRICTED[@]} -eq 0 ]; then

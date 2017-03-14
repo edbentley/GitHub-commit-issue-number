@@ -1,4 +1,5 @@
-# GitHub Commit Ticket Number
+# git ticket
+
 Automatically reference the ticket number (issue or pull request) for a particular branch in your commit message.
 
 ```
@@ -8,19 +9,17 @@ $ git commit -m "add meaning of life"
 
 ## How to set up
 
-- Put `git-ticket.sh` script somewhere, e.g. `~/scripts/git-ticket.sh`
-- Add alias to your `.config` file (change path to where you put `git-ticket.sh`):
+- Clone / download repo
+- Run `setup.sh`
+- `source ~/.bashrc`
 
-  ```
-  git config --global alias.ticket '!sh ~/scripts/git-ticket.sh $1'
-  ```
-- Place `prepare-commit-msg` and `branch-ticket-restrictions.sh` in `~/.git_template/hooks` and run
+When you call `git ticket` in a repo the git hooks will be set up automatically (by calling `git init`). So simply head straight into your repos and start using!
 
-  ```
-  git config --global init.templatedir '~/.git_template'
-  ```
-
-  When you next clone or set up a repo these files will be copied into your `.git` directory. For your existing repos, `git init` will be called automatically (which will copy the files to your `.git` directory) when you call `git ticket` for the first time.
+NOTE: running `setup.sh` will
+  - export variable `GIT_TICKET_PATH` in your `~/.bashrc` and `~/.bash_profile` files
+  - Add alias `git ticket` to your `~/.gitconfig` file
+  - Symbolic link `prepare-commit-msg` and `branch-ticket-restrictions.sh` into `~/.git_template/hooks`
+  - Setup git template to auto-add above files into your repos
 
 ## How to use
 
@@ -50,9 +49,19 @@ $ git commit -m "add meaning of life"
 
 ## Add branch restrictions
 
-- Edit `branch-ticket-restrictions.sh` to add restrictions to branches you can set a ticket for. You can restrict certain branch names, or enforce a prefix.
+- Edit `branch-ticket-restrictions.sh` to add restrictions to branches you can set a ticket for. You can restrict certain branch names, or enforce a prefix. By default this file is a symlink to the git-ticket repo's file you cloned / downloaded.
 - Check current restrictions in repo by calling:
 
   ```
-  git ticket restrict
+  git ticket restrictions
   ```
+
+## Clear existing git ticket
+
+```
+rm */.git/hooks/prepare-commit-msg
+rm */.git/hooks/branch-ticket-restrictions.sh
+rm */.git/hooks/branch-tickets.map
+rm ~/.git_template/hooks/branch-ticket-restrictions.sh
+rm ~/.git_template/hooks/prepare-commit-msg
+```
