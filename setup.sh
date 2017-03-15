@@ -2,12 +2,11 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# add git ticket script path to .bashrc and .bash_profile
+# add git ticket script path to .bash_profile
 GIT_TICKET_PATH="$DIR/git-ticket.sh"
-echo "export GIT_TICKET_PATH=\"$GIT_TICKET_PATH\"" >> $HOME/.bashrc
 echo "export GIT_TICKET_PATH=\"$GIT_TICKET_PATH\"" >> $HOME/.bash_profile
 
-echo "Added env var GIT_TICKET_PATH to .bashrc and .bash_profile"
+echo "Added env var GIT_TICKET_PATH to .bash_profile"
 
 # add git ticket to config
 git config --global alias.ticket '!sh $GIT_TICKET_PATH $1'
@@ -32,4 +31,4 @@ git config --global init.templatedir '~/.git_template'
 echo "Set up git template destination in .gitconfig"
 
 echo "-------"
-echo "All done! Just run 'source ~/.bashrc' and start using git ticket in your repos"
+echo "All done! Just run 'source ~/.bash_profile' and start using git ticket in your repos"

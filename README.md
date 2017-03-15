@@ -11,12 +11,12 @@ $ git commit -m "add meaning of life"
 
 - Clone / download repo
 - Run `setup.sh`
-- `source ~/.bashrc`
+- `source ~/.bash_profile`
 
 When you call `git ticket` in a repo the git hooks will be set up automatically (by calling `git init`). So simply head straight into your repos and start using!
 
 NOTE: running `setup.sh` will
-  - export variable `GIT_TICKET_PATH` in your `~/.bashrc` and `~/.bash_profile` files
+  - export variable `GIT_TICKET_PATH` in `~/.bash_profile`
   - Add alias `git ticket` to your `~/.gitconfig` file
   - Symbolic link `prepare-commit-msg` and `branch-ticket-restrictions.sh` into `~/.git_template/hooks`
   - Setup git template to auto-add above files into your repos
