@@ -2,7 +2,11 @@
 # git-ticket
 
 BRANCH_NAME=`git symbolic-ref HEAD --short`
-BRANCH_MAP=`cat .git/hooks/branch-tickets.map`
+BRANCH_MAP_NAME=".git/hooks/branch-tickets.map"
+if [ ! -f "$BRANCH_MAP_NAME" ]; then
+  exit
+fi
+BRANCH_MAP=`cat "$BRANCH_MAP_NAME"`
 COMMIT_MESSAGE_HEAD=`cat "$1" | head -n 1`
 COMMIT_MESSAGE_REST=`cat "$1" | tail -n +2`
 
